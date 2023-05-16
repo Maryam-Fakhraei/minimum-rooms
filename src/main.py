@@ -10,6 +10,15 @@ def ClassesPerHour(schedule):
 
     return classes_per_hour
 
+def RoomsNeeded(classes_per_hour):
+    # Determine The Maximum Number Of Classes Per Hour .
+    max_classes_per_hour = max(classes_per_hour)
+
+    # Determine How Many Rooms Are Needed To Hold Classes .
+    rooms_needed = max_classes_per_hour if max_classes_per_hour > 0 else 1
+
+    return rooms_needed
+
 def main():
     # Read In The Class Schedule From File .
     schedule = []
@@ -21,6 +30,9 @@ def main():
 
     classes_per_hour = ClassesPerHour(schedule)
     print(classes_per_hour)
+
+    rooms_needed = RoomsNeeded(classes_per_hour)
+    print(rooms_needed)
 
 if __name__ == "__main__":
     main()
