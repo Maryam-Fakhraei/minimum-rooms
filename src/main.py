@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+from termcolor import colored
+
 def ClassesPerHour(schedule):
     # Initialize A List To Store The Number Of Classes Per Hour .
     classes_per_hour = [0] * 25
@@ -29,10 +32,25 @@ def main():
             schedule.append((int(start), int(end)))
 
     classes_per_hour = ClassesPerHour(schedule)
-    print(classes_per_hour)
 
     rooms_needed = RoomsNeeded(classes_per_hour)
-    print(rooms_needed)
+
+    # Welcome
+    print(colored("\n===> Hello, Welcome To This Program <=== \n", "green", attrs=["dark"]))
+    # Print Rooms Needed .
+    print(colored(f"~.~ {rooms_needed} ~.~", "cyan"))
+    # Developers
+    print(colored("\nThank You For Choosing Us :)\n>>>Developed By Maryam Fakhraei & Amirhossein Naseri<<<", "magenta", attrs=["dark"]))
+
+    # Plot A Line Graph Of The Number Of Classes Required In eEvery Hour Of The Day And Night .
+    fig = plt.figure("Classes Per Hour")
+    plt.plot(range(25), classes_per_hour, color = "b", linewidth = 1, linestyle = ":", marker = "*", markersize = 4)
+    plt.xlabel("Time", color = "m")
+    plt.xticks(range(25), color = "y")
+    plt.ylabel("Number Of Classes", color = "m")
+    plt.yticks(range(rooms_needed + 1), color = "y")
+    plt.title("Maryam Fakhraei & Amirhossein Naseri", color = "g", fontstyle = "oblique" , loc= "left")
+    plt.show()
 
 if __name__ == "__main__":
     main()
